@@ -1,0 +1,44 @@
+{% extends 'generic/object.html' %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col col-md-6">
+      <div class="card">
+        <h5 class="card-header">Raw Device Data</h5>
+        <div class="card-body">
+          <table class="table table-hover attr-table">
+            <tr>
+              <th scope="row">Name</th>
+              <td>{{ object.name }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Device</th>
+              <td><a href="{{ object.device.get_absolute_url }}">
+                {{ object.device.name }}
+              </a></td>
+            </tr>
+            <tr>
+              <th scope="row">Last Changed</th>
+              <td>{{ object.last_updated }}</td>
+            </tr>
+            <tr>
+              <th scope="row">hash</th>
+              <td>{{ object.hash }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h5 class="card-header">Data:</h5>
+        <div class="card-body">
+          <pre>{{ object.data }}</pre>
+        </div>
+      </div>
+      {% include 'inc/panels/custom_fields.html' %}
+    </div>
+    <div class="col col-md-6">
+      {% include 'inc/panels/tags.html' %}
+      {% include 'inc/panels/comments.html' %}
+    </div>
+  </div>
+{% endblock content %}
