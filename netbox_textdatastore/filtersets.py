@@ -18,4 +18,4 @@ class TextDataObjectFilterSet(NetBoxModelFilterSet):
 
     class Meta:
         model = TextDataObject
-        fields = ['id', 'name', 'hash']
+        fields = ['id', 'name', 'hash','data']
