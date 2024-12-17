@@ -17,5 +17,7 @@ urlpatterns = (
     path('data/<int:pk>/changelog/', ObjectChangeLogView.as_view(), name='textdataobject_changelog', kwargs={
         'model': TextDataObject
     }),
+    path('data/download/<int:pk>/',
+        views.TextDataObjectDownload, name='textdataobject_download'),
 
 )

@@ -1,4 +1,6 @@
 from netbox.views import generic
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 from . import models, tables, forms, filtersets
 
 
@@ -18,3 +20,10 @@ class TextDataObjectDeleteView(generic.ObjectDeleteView):
 class TextDataObjectEditView(generic.ObjectEditView):
     queryset = models.TextDataObject.objects.all()
     form = forms.TextDataObjectForm
+
+def TextDataObjectDownload(request, ok):
+    object = get_object_or_404(models.TextDataObject, pk=object_id)
+    response = HttpResponse(content_type='text/plain')
+    response.write()
+    response['Content-Disposition'] = f'attachment; filename="{object.device.name}_{object.name}.txt"'
+    return response
