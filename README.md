@@ -1,5 +1,6 @@
 # netbox_textdatastore
 Store raw text files for devices, like configuration files, unparsed command output or test results
+*Use version 0.0.5 for netbox 3.6* 
 
 TextData Object:
 '''
@@ -11,6 +12,7 @@ TextData Object:
     'data': String,           # Your text data, eg Device Configfile
 }
 '''
+
 
 # Example:
 ## extend python-netbox
