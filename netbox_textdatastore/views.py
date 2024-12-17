@@ -21,9 +21,13 @@ class TextDataObjectEditView(generic.ObjectEditView):
     queryset = models.TextDataObject.objects.all()
     form = forms.TextDataObjectForm
 
-def TextDataObjectDownload(request, pk):
-    object = get_object_or_404(models.TextDataObject, pk=pk)
-    response = HttpResponse(content_type='text/plain')
-    response.write(object.data)
-    response['Content-Disposition'] = f'attachment; filename="{object.device.name}_{object.name}.txt"'
-    return response
+
+class TextDataObjectViewDownload(generic.ObjectView):
+    queryset = models.TextDataObject.objects.all()
+
+    def get(self, request, **kwargs):
+      object = self.get_object(**kwargs)
+      response = HttpResponse(content_type='text/plain')
+      response.write(object.data)
+      response['Content-Disposition'] = f'attachment; filename="{object.device.name}_{object.name}.txt"'
+      return response

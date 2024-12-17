@@ -18,6 +18,6 @@ urlpatterns = (
         'model': TextDataObject
     }),
     path('data/download/<int:pk>/',
-        views.TextDataObjectDownload, name='textdataobject_download'),
+        views.TextDataObjectViewDownload.as_view(), name='textdataobject_download'),
 
 )
