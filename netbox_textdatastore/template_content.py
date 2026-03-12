@@ -3,7 +3,7 @@ from . import models, tables
 
 
 class DeviceRawData(PluginTemplateExtension):
-    model = 'dcim.device'
+    models = ['dcim.device']
 
     def right_page(self):
         return self.render('netbox_textdatastore/device_incl.html', extra_context={
